@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fast & Furious</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #111;
+            color: white;
+        }
+
+        /* =========================
+           NAVBAR / MENU
+        ========================= */
+
+        nav {
+            width: 100%;
+            background-color: #050505;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #e50914;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e50914;
+        }
+
+        /* =========================
+           HERO / BERANDA
+        ========================= */
+
+        .hero {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 50px 80px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.8)
+                ),
+                url("fast.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            color: #e50914;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background-color: #e50914;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b20710;
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .judul {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+            color: #e50914;
+        }
+
+        /* =========================
+           TENTANG
+        ========================= */
+
+        .tentang {
+            background-color: #181818;
+        }
+
+        .tentang p {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* =========================
+           DAFTAR FILM
+        ========================= */
+
+        .film-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .film-card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .film-card:hover {
+            transform: translateY(-8px);
+            border-color: #e50914;
+            box-shadow: 0 8px 20px rgba(229, 9, 20, 0.3);
+        }
+
+        .film-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .film-card .isi {
+            padding: 20px;
+        }
+
+        .film-card h3 {
+            color: #e50914;
+            margin-bottom: 10px;
+        }
+
+        .film-card p {
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           KARAKTER
+        ========================= */
+
+        .karakter {
+            background-color: #181818;
+        }
+
+        .karakter-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .karakter-card {
+            background-color: #222;
+            text-align: center;
+            padding-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .karakter-card:hover {
+            transform: scale(1.03);
+        }
+
+        .karakter-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .karakter-card h3 {
+            margin-top: 15px;
+            color: #e50914;
+        }
+
+        .karakter-card p {
+            margin-top: 8px;
+            color: #bbb;
+        }
+
+        /* =========================
+           MOBIL
+        ========================= */
+
+        .mobil-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .mobil-card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .mobil-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .mobil-card h3 {
+            color: #e50914;
+            margin: 15px 0 20px;
+        }
+
+        /* =========================
+           GALERI
+        ========================= */
+
+        .galeri {
+            background-color: #181818;
+        }
+
+        .galeri-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .galeri img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .galeri img:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        /* =========================
+           KONTAK
+        ========================= */
+
+        .kontak {
+            text-align: center;
+        }
+
+        .kontak p {
+            color: #ccc;
+            margin: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #050505;
+            text-align: center;
+            padding: 25px;
+            border-top: 2px solid #e50914;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 18px 25px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 40px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .film-container,
+            .mobil-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .karakter-container,
+            .galeri-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .film-container,
+            .mobil-container,
+            .karakter-container,
+            .galeri-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 500px;
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         MENU NAVIGASI
+    ========================== -->
+
+    <nav>
+        <div class="logo">
+            FAST <span>&</span> FURIOUS
+        </div>
+
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#film">Film</a></li>
+            <li><a href="#karakter">Karakter</a></li>
+            <li><a href="#mobil">Mobil</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         BERANDA
+    ========================== -->
+
+    <section class="hero" id="beranda">
+
+        <div class="hero-content">
+
+            <h1>Fast & Furious</h1>
+
+            <h2>BY SYAHRUL SYARIF</h2>
+
+            <p>
+                Selamat datang di website bertema Fast & Furious.
+                Jelajahi dunia balapan, mobil cepat, persahabatan,
+                keluarga, dan aksi yang menjadi ciri khas franchise ini.
+            </p>
+
+            <a href="#film" class="btn">
+                Jelajahi Film
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TENTANG
+    ========================== -->
+
+    <section class="tentang" id="tentang">
+
+        <h2 class="judul">Tentang Fast & Furious</h2>
+
+        <p>
+            Fast & Furious adalah franchise film yang berfokus pada
+            balapan jalanan, mobil performa tinggi, aksi, persahabatan,
+            dan keluarga. Ceritanya berkembang dari dunia balap jalanan
+            menjadi kisah aksi berskala besar dengan berbagai karakter
+            dan kendaraan ikonik.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FILM
+    ========================== -->
+
+    <section id="film">
+
+        <h2 class="judul">Daftar Film</h2>
+
+        <div class="film-container">
+
+            <div class="film-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (1).png" alt="The Fast and the Furious">
+
+                <div class="isi">
+                    <h3>The Fast and the Furious</h3>
+
+                    <p>
+                        Film pertama yang memperkenalkan dunia balap
+                        jalanan dan karakter utama franchise.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="film-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (2).jpg" alt="Fast Five">
+
+                <div class="isi">
+                    <h3>Fast Five</h3>
+
+                    <p>
+                        Dominic Toretto dan timnya terlibat dalam
+                        sebuah aksi perampokan besar.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="film-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (3).jpg" alt="Fast X">
+
+                <div class="isi">
+                    <h3>Fast X</h3>
+
+                    <p>
+                        Babak baru menghadirkan konflik dan aksi
+                        yang lebih besar bagi keluarga Toretto.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KARAKTER
+    ========================== -->
+
+    <section class="karakter" id="karakter">
+
+        <h2 class="judul">Karakter</h2>
+
+        <div class="karakter-container">
+
+            <div class="karakter-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (4).jpg" alt="Dominic Toretto">
+                <h3>Dominic Toretto</h3>
+                <p>Penggemar mobil dan keluarga.</p>
+            </div>
+
+            <div class="karakter-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (5).jpg" alt="Brian O'Conner">
+                <h3>Brian O'Conner</h3>
+                <p>Polisi yang memiliki hubungan erat dengan dunia balap.</p>
+            </div>
+
+            <div class="karakter-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (8).jpg" alt="Letty Ortiz">
+                <h3>Letty Ortiz</h3>
+                <p>Pembalap dan anggota penting keluarga Toretto.</p>
+            </div>
+
+            <div class="karakter-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (7).jpg" alt="Roman Pearce">
+                <h3>Roman Pearce</h3>
+                <p>Anggota tim yang terkenal dengan sifat humorisnya.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MOBIL
+    ========================== -->
+
+    <section id="mobil">
+
+        <h2 class="judul">Mobil Ikonik</h2>
+
+        <div class="mobil-container">
+
+            <div class="mobil-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\fast-and-furious-4k-dodge-charger-rocket-league-wallpaper-preview.jpg" alt="Dodge Charger">
+                <h3>Dodge Charger</h3>
+            </div>
+
+            <div class="mobil-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\gambar1.jpg" alt="Toyota Supra">
+                <h3>Toyota Supra</h3>
+            </div>
+
+            <div class="mobil-card">
+                <img src="C:\Users\LENOVO DESKTOP\Downloads\1393457.jpg" alt="Nissan Skyline">
+                <h3>Nissan Skyline</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERI
+    ========================== -->
+
+    <section class="galeri" id="galeri">
+
+        <h2 class="judul">Galeri</h2>
+
+        <div class="galeri-container">
+
+            <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (9).jpg" alt="Fast and Furious">
+            <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\download (3).jpg" alt="Mobil Fast and Furious">
+            <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (10).jpg" alt="Balapan">
+            <img src="C:\Users\LENOVO DESKTOP\Downloads\MUH.SYAHRUL SYARIF (XI.12)\images (11).jpg" alt="Mobil Sport">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KONTAK
+    ========================== -->
+
+    <section class="kontak" id="kontak">
+
+        <h2 class="judul">Kontak</h2>
+
+        <p>Email: fastfurious@example.com</p>
+        <p>Instagram: @fastfurious & @syahrullsyrf</p>
+        <p>Website Fan Page Fast & Furious</p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Fast & Furious Fan Website
+        </p>
+
+        <p>
+            Dibuat untuk pembelajaran HTML dan CSS
+        </p>
+
+    </footer>
+
+</body>
+</html>
